@@ -4,16 +4,16 @@ f_high=8000;
 filt_num=26;
 fs=16000;
 nfft=512;
-%% computing band in mel-scale
+% computing band in mel-scale
 mel_low=2595*log10(1+(f_low/100));
 mel_high=2595*log10(1+(f_high/100));
-%% creating the mel-scaled vector
+% creating the mel-scaled vector
 Mel = linspace(mel_low,mel_high,filt_num);
-%% computing frequencies of the Mel vector
+% computing frequencies of the Mel vector
 Freq=100*((10.^(Mel/2595))-1);
 %Freq=mel2hz(Mel);
 t=1;
-%% convert frequencies to nearest bins
+% convert frequencies to nearest bins
 for i=1:filt_num
 f(i) = floor((nfft+1)*Freq(i)/fs);
 end 
